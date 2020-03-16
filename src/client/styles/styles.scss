@@ -1,0 +1,78 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+.head {
+  height: 30vh;
+  background-color: #e1f2f7;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.hero {
+  display: flex;
+  width: 100vw;
+  height: 70vh;
+
+  & > .left-div,
+  & > .right-div {
+    width: 50vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  & > .right-div {
+    background-color: #e5bace;
+    flex-direction: column;
+  }
+  & > .left-div {
+    display: flex;
+    flex-direction: column;
+    & > h2 {
+      margin-bottom: 10px;
+    }
+  }
+}
+.data-form {
+  width: 70%;
+  input {
+    display: block;
+    width: 100%;
+    padding: 5px;
+    margin: 10px 0;
+  }
+  label {
+    margin: 10px 0px;
+  }
+  button {
+    width: 100%;
+  }
+}
+.information {
+  height: 70vh;
+  display: flex;
+  background-color: #eeeeee;
+  & > .left-div,
+  & > .right-div {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+}
+.outside-image {
+  background-color: white;
+  height: 60vh;
+  width: 30vw;
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+}
+.image-holder {
+  background-color: rgba(0, 0, 0, 0.11);
+  width: 80%;
+  height: 40%;
+  background-size: cover;
+  background-position: center;
+}
