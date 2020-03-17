@@ -1,17 +1,23 @@
 import "./styles/styles.scss";
+import "./styles/loader.scss";
 import { startDataHandling } from "./js/startDataHandling";
 //import { recoverData } from "./js/recoverdata";
+
 const submitBtn = document.getElementById("submit");
 const city = document.getElementById("city").value;
 const date = document.getElementById("date").value;
 const img = document.querySelector(".image-holder");
+const textBox = document.querySelector(".text-holder");
+const loadAnimation = document.querySelector(".lds-roller");
 submitBtn.addEventListener("click", event => {
   event.preventDefault();
   const city = document.getElementById("city").value;
   const date = document.getElementById("date").value;
   if ((city, date)) {
     startDataHandling(city, date);
-    setTimeout(recoverData, 1500);
+    showLoad();
+    setTimeout(stopLoad, 2400);
+    setTimeout(recoverData, 2401);
   }
 });
 
@@ -22,6 +28,21 @@ async function recoverData(url = "http://localhost:8081/travel-info") {
   updateUi(response);
 }
 
-function updateUi(data) {
-  img.style.backgroundImage = `url("${data.image.imageLink}")`;
+function updateUi(data = localInfo) {
+  const { city, country, image, response, days, when } = data;
+  img.style.backgroundImage = `url("${image.imageLink}")`;
+  textBox.innerHTML = `<h4>${city}, ${country}</h4>
+  <p>${when == "this week" ? "this week" : `${when}`}</p>
+  <p>Expected weather</p>
+  <p>High: <strong>${response.high}</strong>  Low:<strong>${
+    response.low
+  }</strong> </p>
+  <p>${response.summary} </p>`;
+}
+function showLoad() {
+  textBox.innerHTML = "";
+  loadAnimation.style.display = "inline-block";
+}
+function stopLoad() {
+  loadAnimation.style.display = "none";
 }

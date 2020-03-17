@@ -38,7 +38,7 @@ app.post("/travel-info", (req, res) => {
   if (timeInterval(date)) {
     travelData.when = "this week";
   } else {
-    travelData.when = (new Date(`${date}`).getTime() / 1000).toFixed(0);
+    travelData.days = (new Date(`${date}`).getTime() / 1000).toFixed(0);
   }
   travelData.city = city;
   travelData.date = date;
@@ -96,13 +96,12 @@ async function getWeather(latitude, longitude, date, city) {
     };
   } else {
     const data = await fetch(
-      `https://api.darksky.net/forecast/${process.env.DARK_SKY_KEY}/${latitude},${longitude},${date}`
+      `https://api.darksky.net/forecast/${process.env.DARK_SKY_KEY}/${latitude},${longitude},${travelData.days}`
     );
     const response = await data.json();
-    console.log(response.daily.summary);
     const relevantData = response.daily.data[0];
 
-    const { temperatureLow, temperatureHigh, summary } = relevantData;
+    const { temperatureLow, temperatureHigh, summary = "" } = relevantData;
     travelData.response = {
       low: `${((temperatureLow - 32) / 1.8).toFixed(1)} celsius`,
       high: `${((temperatureHigh - 32) / 1.8).toFixed(1)} celsius`,
