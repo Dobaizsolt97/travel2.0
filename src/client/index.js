@@ -5,8 +5,7 @@ import { dateChecker } from "./js/datechecker";
 //import { recoverData } from "./js/recoverdata";
 
 const submitBtn = document.getElementById("submit");
-const city = document.getElementById("city").value;
-const date = document.getElementById("date").value;
+
 const img = document.querySelector(".image-holder");
 const textBox = document.querySelector(".text-holder");
 const loadAnimation = document.querySelector(".lds-roller");
@@ -25,19 +24,20 @@ submitBtn.addEventListener("click", event => {
 async function recoverData(url = "http://localhost:8081/travel-info") {
   const data = await fetch(url);
   const response = await data.json();
-  console.log(response);
+
   updateUi(response);
+  sendToStorrage(response);
 }
 
-function updateUi(data = localInfo) {
-  const { city, country, image, response, days, when } = data;
+function updateUi(data) {
+  const { city, country, image, response, when } = data;
   img.style.backgroundImage = `url("${image.imageLink}")`;
   textBox.innerHTML = `<h4>${city}, ${country}</h4>
-  <p>${when == "this week" ? "this week" : `${when}`}</p>
-  <p>Expected weather</p>
-  <p>High: <strong>${response.high}</strong>  Low:<strong>${
-    response.low
-  }</strong> </p>
+  <p>${when == "this week" ? "~this week~" : `~${when}~`}</p>
+  <p>Expected weather:</p>
+  <p>highest temperature: <strong>${
+    response.high
+  }</strong>    Lowest: <strong>${response.low}</strong> </p>
   <p>${response.summary} </p>`;
 }
 function showLoad() {
@@ -47,3 +47,12 @@ function showLoad() {
 function stopLoad() {
   loadAnimation.style.display = "none";
 }
+function sendToStorrage(object) {
+  localStorage.setItem("search", JSON.stringify(object));
+}
+window.onload = () => {
+  let search = JSON.parse(localStorage.getItem("search"));
+  if (search) {
+    updateUi(search);
+  }
+};

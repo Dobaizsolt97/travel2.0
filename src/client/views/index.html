@@ -3,27 +3,39 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Trv2</title>
+    <title>Polaro Travel</title>
   </head>
   <body>
     <section class="head">
-      <h1>Go Go Travel</h1>
+      <h1>Polaro-Travel</h1>
     </section>
     <section class="hero">
       <div class="left-div">
-        <h2>Where do you want to travel?</h2>
-        <form class="data-form">
-          <label for="city">City name:</label>
-          <input id="city" type="text" required />
-          <label for="date">Time of departure:</label>
-          <input id="date" type="date" required />
-          <button id="submit" type="submit">Go Go</button>
-        </form>
+        <div class="form-holder">
+          <h2>Where do you want to travel?</h2>
+          <form class="data-form">
+            <label for="city">City name:</label>
+            <input id="city" type="text" required />
+            <label for="date">Time of departure:</label>
+            <input id="date" type="date" required />
+            <button id="submit" type="submit">Go Go</button>
+          </form>
+        </div>
       </div>
       <div class="right-div">
         <div class="outside-image">
           <div class="image-holder"></div>
-          <div class="text-holder"></div>
+          <div class="text-holder">
+            <h4>{city}, {country}</h4>
+            <p>{when == "this week" ? "this week" : {when}`}</p>
+            <p>Expected weather</p>
+            <p>
+              High: <strong>response.high}</strong> Low:<strong
+                >{ response.low }</strong
+              >
+            </p>
+            <p>response.summary}</p>
+          </div>
           <div class="lds-roller">
             <div></div>
             <div></div>
