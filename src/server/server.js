@@ -7,7 +7,6 @@ const bodyParser = require("body-parser");
 
 const fetch = require("node-fetch");
 const port = 8081;
-
 const app = express();
 
 // api base values
@@ -110,8 +109,8 @@ async function getWeather(latitude, longitude) {
 
     const { temperatureLow, temperatureHigh, summary = "" } = relevantData;
     travelData.response = {
-      low: `${((temperatureLow - 32) / 1.8).toFixed(1)} celsius`,
-      high: `${((temperatureHigh - 32) / 1.8).toFixed(1)} celsius`,
+      low: `${((temperatureLow - 32) / 1.8).toFixed(0)} celsius`,
+      high: `${((temperatureHigh - 32) / 1.8).toFixed(0)} celsius`,
       summary: summary
     };
   }

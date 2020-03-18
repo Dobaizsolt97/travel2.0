@@ -138,11 +138,11 @@
     width: 250px;
   }
   .text-holder {
-    padding-bottom: -2px;
-    line-height: 22px;
+    padding-bottom: 0px;
+    line-height: 19px;
     & > h4,
     p {
-      font-size: 15px;
+      font-size: 12px;
     }
   }
 }
