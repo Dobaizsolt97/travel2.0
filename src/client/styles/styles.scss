@@ -1,6 +1,8 @@
+@import url("https://fonts.googleapis.com/css?family=Oswald&display=swap");
 * {
   box-sizing: border-box;
   margin: 0;
+  font-family: "Oswald", sans-serif;
 }
 .head {
   height: 20vh;
@@ -78,7 +80,7 @@
 }
 .image-holder {
   background-color: rgba(0, 0, 0, 0.11);
-  width: 80%;
+  width: 90%;
   height: 50%;
   background-size: cover;
   background-position: center;

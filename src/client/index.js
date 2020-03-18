@@ -1,6 +1,7 @@
 import "./styles/styles.scss";
 import "./styles/loader.scss";
 import { startDataHandling } from "./js/startDataHandling";
+import { dateChecker } from "./js/datechecker";
 //import { recoverData } from "./js/recoverdata";
 
 const submitBtn = document.getElementById("submit");
@@ -13,7 +14,7 @@ submitBtn.addEventListener("click", event => {
   event.preventDefault();
   const city = document.getElementById("city").value;
   const date = document.getElementById("date").value;
-  if ((city, date)) {
+  if (city && dateChecker(date)) {
     startDataHandling(city, date);
     showLoad();
     setTimeout(stopLoad, 2400);
