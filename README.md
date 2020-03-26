@@ -8,4 +8,8 @@ use `npm run build-prod` to generate dist folder
 
 ## Extend Options
 
-**local storage**
+__the app uses local storage to remember the searches that have been made__
+
+## Used API-s
+**Geonames** **DarkSky** **Unsplash**
+
